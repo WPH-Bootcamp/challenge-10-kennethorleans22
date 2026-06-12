@@ -7,7 +7,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Eye, EyeOff, Asterisk } from 'lucide-react';
+import { Eye, EyeOff} from 'lucide-react';
 
 import { loginSchema, LoginFormValues } from '@/lib/validations/auth';
 import { login } from '@/lib/api/auth';
