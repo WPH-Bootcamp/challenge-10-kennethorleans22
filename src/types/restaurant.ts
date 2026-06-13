@@ -1,3 +1,5 @@
+import { MenuItem } from './menu';
+import { Review } from './review';
 export interface Restaurant {
   id: number;
   name: string;
@@ -8,10 +10,8 @@ export interface Restaurant {
   category: string;
   reviewCount: number;
   menuCount: number;
-  priceRange: {
-    min: number;
-    max: number;
-  };
+  priceRange: { min: number; max: number };
+  coordinates?: { lat: number; long: number };
 }
 
 export interface RestaurantPagination {
@@ -46,4 +46,13 @@ export interface RestaurantFilters {
   category?: string;
   page?: number;
   limit?: number;
+}
+
+export interface RestaurantDetailResponse {
+  success: boolean;
+  message: string;
+  data: Restaurant & {
+    menus: MenuItem[];
+    reviews: Review[];
+  };
 }
