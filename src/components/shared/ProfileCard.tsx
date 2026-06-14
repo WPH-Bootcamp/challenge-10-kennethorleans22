@@ -67,7 +67,7 @@ export default function ProfileCard({ variant, activePage, onClose }: ProfileCar
         </span>
       </button>
 
-      <hr className={isDrop ? 'border-neutral-200' : 'border-t border-[#E9EAEB]'} />
+      <hr className={isDrop ? 'border-neutral-200' : 'border-t border-neutral-200'} />
 
       {/* Menu items */}
       <div className={`flex flex-col ${isDrop ? 'gap-3' : 'gap-6'}`}>

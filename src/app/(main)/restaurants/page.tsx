@@ -41,7 +41,7 @@ function Checkbox({ checked, onClick }: { checked: boolean; onClick: () => void 
     <div
       onClick={onClick}
       className={`w-5 h-5 rounded-[6px] flex items-center justify-center cursor-pointer shrink-0 ${
-        checked ? 'bg-primary-100' : 'border border-[#A4A7AE] bg-white'
+        checked ? 'bg-primary-100' : 'border border-neutral-400 bg-white'
       }`}
     >
       {checked && (
@@ -274,7 +274,7 @@ export default function RestaurantsPage() {
       <div className='flex flex-col gap-[10px] px-4'>
         <p className='text-lg font-extrabold text-neutral-950 tracking-[-0.02em] leading-8'>Price</p>
         <div className='flex items-center gap-2 h-[54px] border border-neutral-300 rounded-lg px-2'>
-          <div className='w-[38px] h-[38px] bg-[#F5F5F5] rounded-[4px] flex items-center justify-center shrink-0'>
+          <div className='w-[38px] h-[38px] bg-neutral-100 rounded-[4px] flex items-center justify-center shrink-0'>
             <span className='text-base font-bold text-neutral-950 tracking-[-0.02em]'>Rp</span>
           </div>
           <Input
@@ -282,11 +282,11 @@ export default function RestaurantsPage() {
             placeholder='Minimum Price'
             value={priceMin}
             onChange={(e) => updateParam('priceMin', e.target.value)}
-            className='border-0 p-0 h-auto text-base font-normal text-neutral-950 placeholder:text-[#717680] focus-visible:ring-0 bg-transparent tracking-[-0.02em]'
+            className='border-0 p-0 h-auto text-base font-normal text-neutral-950 placeholder:text-neutral-500 focus-visible:ring-0 bg-transparent tracking-[-0.02em]'
           />
         </div>
         <div className='flex items-center gap-2 h-[54px] border border-neutral-300 rounded-lg px-2'>
-          <div className='w-[38px] h-[38px] bg-[#F5F5F5] rounded-[4px] flex items-center justify-center shrink-0'>
+          <div className='w-[38px] h-[38px] bg-neutral-100 rounded-[4px] flex items-center justify-center shrink-0'>
             <span className='text-base font-bold text-neutral-950 tracking-[-0.02em]'>Rp</span>
           </div>
           <Input

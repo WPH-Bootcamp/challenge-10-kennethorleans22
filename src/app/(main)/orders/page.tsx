@@ -126,7 +126,7 @@ function ReviewModal({
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder='Please share your thoughts about our service!'
-          className='w-full h-[235px] border border-neutral-300 rounded-xl px-3 py-2 text-sm lg:text-base font-normal leading-7 lg:leading-[30px] tracking-[-0.02em] text-neutral-950 placeholder:text-[#717680] resize-none outline-none'
+          className='w-full h-[235px] border border-neutral-300 rounded-xl px-3 py-2 text-sm lg:text-base font-normal leading-7 lg:leading-[30px] tracking-[-0.02em] text-neutral-950 placeholder:text-neutral-500 resize-none outline-none'
         />
 
         {isEditing ? (
@@ -299,7 +299,7 @@ export default function OrdersPage() {
                   placeholder='Search'
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className='text-sm font-normal leading-7 tracking-[-0.02em] text-[#535862] placeholder:text-[#535862] outline-none w-full bg-transparent'
+                  className='text-sm font-normal leading-7 tracking-[-0.02em] text-neutral-600 placeholder:text-neutral-600 outline-none w-full bg-transparent'
                 />
               </div>
 

@@ -25,9 +25,9 @@ const PAYMENT_METHODS = [
 ];
 
 const checkoutSchema = z.object({
-  deliveryAddress: z.string().min(5, 'Masukkan alamat lengkap'),
+  deliveryAddress: z.string().min(5, 'Fill in complete address'),
   phone: z.string().min(8, 'Nomor HP tidak valid'),
-  paymentMethod: z.string().min(1, 'Pilih metode pembayaran'),
+  paymentMethod: z.string().min(1, 'Choose payment method'),
 });
 
 type CheckoutFormValues = z.infer<typeof checkoutSchema>;
@@ -166,7 +166,7 @@ export default function CheckoutPage() {
                       addressInputProps.ref(el);
                       (addressRef as React.MutableRefObject<HTMLInputElement | null>).current = el;
                     }}
-                    placeholder='Masukkan alamat pengiriman lengkap'
+                    placeholder='Fill in complete address'
                     className='w-full text-sm lg:text-base font-medium leading-7 lg:leading-[30px] lg:tracking-[-0.03em] text-neutral-950 bg-transparent outline-none placeholder:text-neutral-400 mt-1'
                   />
                   {errors.deliveryAddress && (
