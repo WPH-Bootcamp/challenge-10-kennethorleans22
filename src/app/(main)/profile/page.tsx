@@ -61,7 +61,7 @@ export default function ProfilePage() {
 
     try {
       const updatedUser = await saveProfile(formData);
-      setAuth(token, updatedUser);
+      setAuth(token!, updatedUser);
       setIsEditing(false);
       setAvatarFile(null);
       setAvatarPreview(null);
