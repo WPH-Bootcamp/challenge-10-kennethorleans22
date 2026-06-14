@@ -1,5 +1,5 @@
 import api from "./axios";
-import { RestaurantDetailResponse } from '@/types/restaurant';
+import { RestaurantDetailResponse, RecommendedResponse } from '@/types/restaurant';
 import { Restaurant, RestaurantListResponse, RestaurantFilters } from "@/types/restaurant";
 
 export async function getRestaurants(filters?: RestaurantFilters): Promise<RestaurantListResponse> {
@@ -9,9 +9,21 @@ export async function getRestaurants(filters?: RestaurantFilters): Promise<Resta
   return response.data;
 }
 
+export async function getRecommended(): Promise<RecommendedResponse> {
+  const response = await api.get<RecommendedResponse>("/api/resto/recommended");
+  return response.data;
+}
+
 export async function getBestSeller(page = 1, limit = 10): Promise<RestaurantListResponse> {
   const response = await api.get<RestaurantListResponse>("/api/resto/best-seller", {
     params: { page, limit },
+  });
+  return response.data;
+}
+
+export async function getNearby(range?: number, limit?: number): Promise<RestaurantListResponse> {
+  const response = await api.get<RestaurantListResponse>("/api/resto/nearby", {
+    params: { range, limit },
   });
   return response.data;
 }

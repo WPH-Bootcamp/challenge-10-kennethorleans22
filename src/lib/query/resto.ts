@@ -1,18 +1,43 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRestaurants, getBestSeller, searchRestaurants, getRestaurantDetail } from '@/lib/api/resto';
+import {
+  getRestaurants,
+  getRecommended,
+  getBestSeller,
+  getNearby,
+  searchRestaurants,
+  getRestaurantDetail,
+} from '@/lib/api/resto';
 import { RestaurantFilters } from "@/types/restaurant";
 
-export function useRestaurants(filters?: RestaurantFilters) {
+export function useRestaurants(filters?: RestaurantFilters, enabled = true) {
   return useQuery({
     queryKey: ["restaurants", filters],
     queryFn: () => getRestaurants(filters),
+    enabled,
   });
 }
 
-export function useBestSeller() {
+export function useRecommended(enabled = true) {
+  return useQuery({
+    queryKey: ["restaurants", "recommended"],
+    queryFn: () => getRecommended(),
+    enabled,
+  });
+}
+
+export function useBestSeller(enabled = true) {
   return useQuery({
     queryKey: ["restaurants", "best-seller"],
     queryFn: () => getBestSeller(),
+    enabled,
+  });
+}
+
+export function useNearby(enabled = true) {
+  return useQuery({
+    queryKey: ["restaurants", "nearby"],
+    queryFn: () => getNearby(),
+    enabled,
   });
 }
 

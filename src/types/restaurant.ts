@@ -1,5 +1,6 @@
 import { MenuItem } from './menu';
 import { Review } from './review';
+
 export interface Restaurant {
   id: number;
   name: string;
@@ -12,6 +13,36 @@ export interface Restaurant {
   menuCount: number;
   priceRange: { min: number; max: number };
   coordinates?: { lat: number; long: number };
+}
+
+export interface RecommendedRestaurant {
+  id: number;
+  name: string;
+  star: number;
+  place: string;
+  lat: number;
+  long: number;
+  logo: string;
+  images: string[];
+  category: string;
+  reviewCount: number;
+  sampleMenus: {
+    id: number;
+    foodName: string;
+    price: number;
+    type: string;
+    image: string;
+  }[];
+  isFrequentlyOrdered: boolean;
+}
+
+export interface RecommendedResponse {
+  success: boolean;
+  message: string;
+  data: {
+    recommendations: RecommendedRestaurant[];
+    message: string;
+  };
 }
 
 export interface RestaurantPagination {
@@ -39,6 +70,8 @@ export interface RestaurantListResponse {
 
 export interface RestaurantFilters {
   location?: string;
+  lat?: number;
+  long?: number;
   range?: number;
   priceMin?: number;
   priceMax?: number;

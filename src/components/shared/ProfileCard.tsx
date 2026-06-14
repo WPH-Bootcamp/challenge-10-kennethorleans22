@@ -4,7 +4,7 @@ import { useAuthStore } from '@/store/auth';
 
 interface ProfileCardProps {
   variant: 'dropdown' | 'sidebar';
-  activePage?: 'orders';
+  activePage?: 'orders' | 'delivery-address';
   onClose?: () => void;
 }
 
@@ -29,9 +29,15 @@ export default function ProfileCard({ variant, activePage, onClose }: ProfileCar
   const textClass = isDrop
     ? 'text-sm font-medium text-neutral-950'
     : 'text-base font-medium leading-[30px] tracking-[-0.03em] text-neutral-950';
+  const activeTextClass = isDrop
+    ? 'text-sm font-medium text-primary-100'
+    : 'text-base font-medium leading-[30px] tracking-[-0.03em] text-primary-100';
   const btnClass = isDrop
     ? 'flex items-center gap-2 w-full justify-start cursor-pointer'
     : 'flex flex-row items-center gap-2 cursor-pointer';
+
+  const redFilter =
+    'brightness(0) saturate(100%) invert(18%) sepia(90%) saturate(4000%) hue-rotate(348deg) brightness(82%)';
 
   return (
     <div
@@ -66,23 +72,23 @@ export default function ProfileCard({ variant, activePage, onClose }: ProfileCar
       {/* Menu items */}
       <div className={`flex flex-col ${isDrop ? 'gap-3' : 'gap-6'}`}>
         {/* Delivery Address */}
-        <button onClick={() => navigate('/')} className={btnClass}>
-          <img src='/images/icons/map-pin.svg' alt='' className={iconClass} />
-          <span className={textClass}>Delivery Address</span>
-        </button>
+        {activePage === 'delivery-address' ? (
+          <div className='flex flex-row items-center gap-2'>
+            <img src='/images/icons/map-pin.svg' alt='' className={iconClass} style={{ filter: redFilter }} />
+            <span className={activeTextClass}>Delivery Address</span>
+          </div>
+        ) : (
+          <button onClick={() => navigate('/delivery-address')} className={btnClass}>
+            <img src='/images/icons/map-pin.svg' alt='' className={iconClass} />
+            <span className={textClass}>Delivery Address</span>
+          </button>
+        )}
 
         {/* My Orders */}
         {activePage === 'orders' ? (
           <div className='flex flex-row items-center gap-2'>
-            <img
-              src='/images/icons/my-orders.svg'
-              alt=''
-              className={iconClass}
-              style={{ filter: 'brightness(0) saturate(100%) invert(18%) sepia(90%) saturate(4000%) hue-rotate(348deg) brightness(82%)' }}
-            />
-            <span className={`${isDrop ? 'text-sm font-medium' : 'text-base font-medium leading-[30px] tracking-[-0.03em]'} text-primary-100`}>
-              My Orders
-            </span>
+            <img src='/images/icons/my-orders.svg' alt='' className={iconClass} style={{ filter: redFilter }} />
+            <span className={activeTextClass}>My Orders</span>
           </div>
         ) : (
           <button onClick={() => navigate('/orders')} className={btnClass}>
