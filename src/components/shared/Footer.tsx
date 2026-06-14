@@ -4,15 +4,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const exploreLinks = [
-  { label: 'All Food',    href: '/category?type=all-food' },
-  { label: 'Nearby',      href: '/category?type=nearby' },
-  { label: 'Discount',    href: '/category?type=discount' },
-  { label: 'Best Seller', href: '/category?type=best-seller' },
-  { label: 'Delivery',    href: '/category?type=delivery' },
-  { label: 'Lunch',       href: '/category?type=lunch' },
+  { label: 'All Food',    href: '/restaurants' },
+  { label: 'Nearby',      href: '/restaurants?mode=nearby&range=0.5' },
+  { label: 'Discount',    href: '/restaurants?category=discount' },
+  { label: 'Best Seller', href: '/restaurants?mode=best-seller' },
+  { label: 'Delivery',    href: '/restaurants?category=delivery' },
+  { label: 'Lunch',       href: '/restaurants?category=lunch' },
 ];
 
-const helpLinks = ['How to Order', 'Payment Methods', 'Track My Order', 'FAQ', 'Contact Us'];
+const helpLinks = [
+  'How to Order',
+  'Payment Methods',
+  'Track My Order',
+  'FAQ',
+  'Contact Us',
+];
+
 const socialLinks = [
   { name: 'Facebook',  icon: '/images/socials/facebook.svg',  href: 'https://www.facebook.com' },
   { name: 'Instagram', icon: '/images/socials/instagram.svg', href: 'https://www.instagram.com' },
@@ -72,10 +79,16 @@ export default function Footer() {
       {/* Kolom kanan: Help */}
       <div className='flex flex-col gap-4 lg:gap-5 lg:w-[200px]'>
         <span className='text-sm lg:text-base font-extrabold text-neutral-25'>Help</span>
-        {helpLinks.map((link) => (
-          <span key={link} className='text-sm lg:text-base font-normal text-neutral-25 tracking-[-0.02em] leading-[28px] lg:leading-[30px]'>
-            {link}
-          </span>
+        {helpLinks.map((label) => (
+          <a
+            key={label}
+            href='/images/footer-photo.png'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-sm lg:text-base font-normal text-neutral-25 tracking-[-0.02em] leading-[28px] lg:leading-[30px] cursor-pointer hover:underline'
+          >
+            {label}
+          </a>
         ))}
       </div>
 
