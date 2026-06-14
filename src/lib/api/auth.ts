@@ -15,3 +15,8 @@ export async function getProfile(): Promise<User> {
   const response = await api.get("/api/auth/profile");
   return response.data.data;
 }
+
+export async function updateProfile(formData: FormData): Promise<User> {
+  const response = await api.put("/api/auth/profile", formData);
+  return response.data.data;
+}

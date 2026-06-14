@@ -7,7 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 
 import { useAuthStore } from "@/store/auth";
 import { Button } from "@/components/ui/button";
-
+import ProfileCard from '@/components/shared/ProfileCard';
 import { useCart } from '@/lib/query/cart';
 
 export default function Navbar() {
@@ -37,11 +37,7 @@ const isScrolled = pathname !== '/' || scrolled;
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleLogout = () => {
-    clearAuth();
-    setDropdownOpen(false);
-    router.push("/login");
-  };
+
 
   return (
     <header
@@ -110,49 +106,10 @@ const isScrolled = pathname !== '/' || scrolled;
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 top-[calc(100%+8px)] w-[197px] bg-white rounded-2xl shadow-[0px_0px_20px_rgba(203,202,202,0.25)] p-4 flex flex-col gap-3">
-                  <div className="flex items-center gap-2">
-                    {user?.avatar ? (
-                      <img src={user.avatar} alt={user.name} className="w-9 h-9 rounded-full object-cover" />
-                    ) : (
-                      <div className="w-9 h-9 rounded-full bg-neutral-300" />
-                    )}
-                    <span className="text-base font-bold tracking-[-0.02em] text-neutral-950">{user?.name}</span>
-                  </div>
-
-                  <hr className="border-neutral-200" />
-
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => { setDropdownOpen(false); router.push("/delivery-address"); }}
-                    className="flex items-center gap-2 text-sm font-medium text-neutral-950 w-full justify-start h-auto px-0 py-0 hover:bg-transparent"
-                  >
-                    <img src="/images/icons/map-pin.svg" alt="" aria-hidden="true" className="w-5 h-5" />
-                    Delivery Address
-                  </Button>
-
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={() => { setDropdownOpen(false); router.push("/orders"); }}
-                    className="flex items-center gap-2 text-sm font-medium text-neutral-900 w-full justify-start h-auto px-0 py-0 hover:bg-transparent"
-                  >
-                    <img src="/images/icons/my-orders.svg" alt="" aria-hidden="true" className="w-5 h-5" />
-                    My Orders
-                  </Button>
-
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    onClick={handleLogout}
-                    className="flex items-center gap-2 text-sm font-medium text-neutral-950 w-full justify-start h-auto px-0 py-0 hover:bg-transparent"
-                  >
-                    <img src="/images/icons/logout.svg" alt="" aria-hidden="true" className="w-5 h-5" />
-                    Logout
-                  </Button>
-                </div>
-              )}
+  <div className="absolute right-0 top-[calc(100%+8px)]">
+    <ProfileCard variant="dropdown" onClose={() => setDropdownOpen(false)} />
+  </div>
+)}
             </div>
           </div>
         ) : (

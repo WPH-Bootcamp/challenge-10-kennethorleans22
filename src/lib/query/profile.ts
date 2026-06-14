@@ -1,5 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { getProfile } from '@/lib/api/profile';
+import { updateProfile } from '@/lib/api/auth';
 
 interface UseProfileOptions {
   enabled?: boolean;
@@ -10,5 +11,11 @@ export function useProfile({ enabled = true }: UseProfileOptions = {}) {
     queryKey: ['profile'],
     queryFn: getProfile,
     enabled,
+  });
+}
+
+export function useUpdateProfile() {
+  return useMutation({
+    mutationFn: (formData: FormData) => updateProfile(formData),
   });
 }

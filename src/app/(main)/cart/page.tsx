@@ -56,7 +56,7 @@ export default function CartPage() {
             </div>
           ) : cartGroups.length === 0 ? (
             <div className='flex justify-center py-20'>
-              <p className='text-base font-medium text-neutral-500'>Keranjang kamu kosong</p>
+              <p className='text-base font-medium text-neutral-500'>Your cart is empty.</p>
             </div>
           ) : (
             <div className='flex flex-col gap-5'>
